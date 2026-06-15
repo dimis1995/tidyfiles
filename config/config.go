@@ -18,6 +18,11 @@ type Config struct {
 		MaxSize  int32  `mapstructure:"max_size"`
 		SizeUnit string `mapstructure:"size_unit"`
 	} `mapstructure:"size"`
+	Output struct {
+		SortBy    string `mapstructure:"sort_by"`
+		Ascending bool   `mapstructure:"ascending"`
+		Filename  string `mapstructure:"filename"`
+	} `mapstructure:"output"`
 }
 
 func (service Config) PrintConfiguration() {
@@ -52,6 +57,9 @@ func setDefaults() {
 	viper.SetDefault("allowed_extensions", []string{"pdf", "jpg", "png"})
 	viper.SetDefault("size.max_size", 100)
 	viper.SetDefault("size.size_unit", "MB")
+	viper.SetDefault("output.filename", "report")
+	viper.SetDefault("output.sort_by", "date")
+	viper.SetDefault("output.ascending", true)
 }
 
 func LoadConfig(filename string) (*Config, error) {
