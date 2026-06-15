@@ -1,0 +1,11 @@
+title = "TidyFiles Configuration"
+
+dry_run = false
+allowed_extensions = [
+    ".jpg",
+    ".png",
+]
+
+[size]
+max_size = 100
+size_unit = 'KB'
